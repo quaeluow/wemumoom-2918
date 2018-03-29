@@ -1,0 +1,1 @@
+The weights of a random sample of cereal boxes that are supposed to weigh 1 pound are given below. Assume that the weight is normally distributed. Estimate the standard deviation of the entire population with $siglev$PERCENT confidence.

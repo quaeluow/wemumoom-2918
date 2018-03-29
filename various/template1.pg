@@ -1,0 +1,56 @@
+# DESCRIPTION
+# A simple sample problem that asks students to 
+# differentiate a trigonometric function.
+# WeBWorK problem written by Gavin LaRose, 
+# <glarose(at)umich(dot)edu>
+# ENDDESCRIPTION
+
+## DBsubject('WeBWorK')
+## DBchapter('Demos')
+## DBsection('Problem')
+## KEYWORDS('')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+## Author('Gavin LaRose')
+## Institution('UMich')
+
+DOCUMENT();
+loadMacros(
+"PGstandard.pl",
+"MathObjects.pl",
+);
+
+# make sure we're in the context we want
+Context("Numeric");
+
+$a = random(2,9,1);
+$trigFunc = Formula("sin($a x)");
+$trigDeriv = $trigFunc->D();
+
+TEXT(beginproblem());
+Context()->texStrings;
+BEGIN_TEXT
+Find the derivative of the function \(f(x) = $trigFunc\).
+$PAR
+\(\frac{df}{dx} = \) \{ ans_rule(35) \}
+END_TEXT
+Context()->normalStrings;
+
+ANS( $trigDeriv->cmp() );
+
+Context()->texStrings;
+SOLUTION(EV3(<<'END_SOLUTION'));
+$PAR SOLUTION $PAR
+We find the derivative to this using the 
+chain rule.  The inside function is \($a x\), 
+so that its derivative is \($a\), and the 
+outside function is \(\sin(x)\), which has 
+derivative \(\cos(x)\).  Thus the solution is
+\[ \frac{d}{dx} $trigFunc = $trigDeriv. \]
+END_SOLUTION
+Context()->normalStrings;
+
+ENDDOCUMENT();

@@ -1,0 +1,13 @@
+Hi,
+
+To log in for the grades database and for WeBWorK, here are your credentials:
+
+username:
+
+password:
+
+The grades database is not operational yet. I will let you know in class when it is uploaded. However, WeBWorK is already in operation, and the first lab report is online. Please log in and make sure everything looks good. Lab Report 1 is due on Wednesday, January 17, at 12pm sharp. WeBWorK will not accept submissions after the deadline.
+
+Let me know if there are any problems, but please do not reply to this email. Email me at slukits@bcit.ca instead.
+
+Stefan
