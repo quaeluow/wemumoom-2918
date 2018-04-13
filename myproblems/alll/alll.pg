@@ -31,7 +31,7 @@ $a2=sprintf("%.2f", (($n[$i1]-1)*$squ[$i1])/$chisqL[$i1]);
 TEXT(beginproblem());
 Context()->texStrings;
 BEGIN_TEXT
-A sensitive measuring device should not have a large variance in the errors of measurements it makes. A random sample of $n[$i1] measurement errors gives \(s^{2}=$squ[$i1]\). Give a $cnf[$i1]% confidence interval for the variance of measurement errors.
+A sensitive measuring device should not have a large variance in the errors of measurements it makes. A random sample of $n[$i1] measurement errors gives \(s^{2}=$squ[$i1]\). Give a $cnf[$i1]% confidence interval for the variance of measurement errors, assuming that the measurement errors are approximately normally distributed.
 $PAR
 The lower bound is approximately \{ ans_rule(7) \} (round to two digits after the decimal point).$BR
 The upper bound is approximately \{ ans_rule(7) \} (round to two digits after the decimal point).
