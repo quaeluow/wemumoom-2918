@@ -1,0 +1,103 @@
+# DESCRIPTION
+# WeBWorK problem written by Stefan Lukits 
+# <slukits(at)bcit(dot)ca>
+# DBsubject(Linear algebra)
+# DBchapter(Inner products)
+# DBsection(Projection and distance)
+# Date(2018/11/06)
+# Institution(British Columbia Institute of Technology)
+# Author(Stefan Lukits)
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "MathObjects.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+@n=(
+"John",
+"Jerome",
+"Francis",
+"Adeline",
+"Richard",
+"Leonard",
+"Raymond",
+"Allyson",
+"Rebecca",
+"Charles",
+"Mariana",
+"Patricia",
+"Robert",
+"Donald",
+"Steven",
+"Eden",
+"Norman",
+"Catherine",
+"Clara",
+"Kara",
+"Jean",
+"Linda",
+"David",
+"Ernest",
+"Charles",
+"Doris",
+"Arthur",
+"Sheila",
+"Kimberly",
+"Carol",
+"Chad",
+"Lena",
+"Aaron",
+"Barbara",
+"Christina",
+"Elizabeth",
+"Vincent",
+"Kenneth",
+"Anna",
+"Andre",
+"Keith",
+"Thomas",
+"Roger",
+"Zane",
+"April",
+"Lauren",
+"Jan",
+"Stephen",
+"Arron",
+"Robert"
+);
+
+do { $b=random(-1,1,1); } until ($b!=0);
+$k1=random(2,9,1);
+$k2=$k1*100;
+$k3=$k2/4;
+$au=random($k3-20,$k3+20,0);
+$bu=0.5*($k2-(2*$au));
+$sot=2**0.5;
+$e=random(0.003,0.009,0);
+$bmu=$bu+$b*$e;
+$m1=random(0,49,1);
+do { $m2=random(0,49,1); } until ($m2!=$m1);
+do { $m3=random(0,49,1); } until (($m3!=$m1) && ($m3!=$m2));
+do { $m4=random(0,49,1); } until (($m4!=$m1) && ($m4!=$m2) && ($m4!=$m3));
+$name1=$n[$m1];
+$name2=$n[$m2];
+$name3=$n[$m3];
+$name4=$n[$m4];
+$a=sprintf("%.5f",$au);
+$bm=sprintf("%.5f",$bmu);
+
+BEGIN_TEXT
+A rectangle is known to have a perimeter of \($k2\) metres. $name1 measures a length of \($a\) metres for the length, $name2 measures a length of \($bm\) metres for the width. Use least squares adjustment to report the most likely area of the rectangle, using both ${name1}'s and ${name2}'s measurements. Round your answer to five digits after the decimal point.
+$PAR
+Answer: \{ans_rule(12)\}.
+
+END_TEXT
+
+ANS(num_cmp(45));
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

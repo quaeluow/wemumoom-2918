@@ -1,20 +1,20 @@
-id,directory,qnum,isbn,pagenum,keywords,DBsubject,DBchapter,DBsection
-itos,ft-06-LabReport,q12.pg,,,Newton's law of cooling,Precalculus,Exponential and logarithmic expressions and functions,Applications and models - radioactive decay
-fnhi,gm-08-LabReport,q09.pg,,,spherical trigonometry,Trigonometry,Triangle trigonometry,Applications of special triangles & right triangles
-uvup,gm-07-LabReport,q15.pg,,,spherical trigonometry,Trigonometry,Triangle trigonometry,Applications of special triangles & right triangles
-ibql,ft-06-LabReport,q01.pg,,,Newton's law of cooling,Precalculus,Exponential and logarithmic expressions and functions,Applications and models - radioactive decay
-mzsg,fs-09-LabReport,q13.pg,0256126518,220,confidence interval for variance or standard deviation,Statistics,Confidence intervals,Variance
-alll,fs-09-LabReport,q14.pg,0256126518,220,confidence interval for variance or standard deviation,Statistics,Confidence intervals,Variance
-beli,fs-10a-LabReport,q17.pg,9780321924599,419,hypothesis testing one sample stdev,Statistics,Hypothesis tests,One sample variance
-kbff,fs-10a-LabReport,q18.pg,9780321924599,423,hypothesis testing one sample stdev,Statistics,Hypothesis tests,One sample variance
-vonl,fs-13-LabReport,q06.pg,,,Statistics,Hypothesis tests,Chi-squared test for goodness of fit
-qido,fs-13-LabReport,q07.pg,,,Statistics,Nonparametric methods,Kolmogorov-Smirnov test
-keac,fs-13-LabReport,q08.pg,,,Statistics,Nonparametric methods,Kolmogorov-Smirnov test
-rboj,fs-14-LabReport,q08.pg,,,Statistics,Hypothesis tests,One-way ANOVA
-cver,fs-13-LabReport,q04.pg,,,Statistics,Hypothesis tests,Chi-squared test for goodness of fit
-ukud
-fliu
-kwpk
+id,directory,qnum,isbn,pagenum,BasedOn,keywords,DBsubject,DBchapter,DBsection
+itos,ft-06-LabReport,q12.pg,,,,Newton's law of cooling,Precalculus,Exponential and logarithmic expressions and functions,Applications and models - radioactive decay
+fnhi,gm-08-LabReport,q09.pg,,,,spherical trigonometry,Trigonometry,Triangle trigonometry,Applications of special triangles & right triangles
+uvup,gm-07-LabReport,q15.pg,,,,spherical trigonometry,Trigonometry,Triangle trigonometry,Applications of special triangles & right triangles
+ibql,ft-06-LabReport,q01.pg,,,,Newton's law of cooling,Precalculus,Exponential and logarithmic expressions and functions,Applications and models - radioactive decay
+mzsg,fs-09-LabReport,q13.pg,0256126518,220,,confidence interval for variance or standard deviation,Statistics,Confidence intervals,Variance
+alll,fs-09-LabReport,q14.pg,0256126518,220,,confidence interval for variance or standard deviation,Statistics,Confidence intervals,Variance
+beli,fs-10a-LabReport,q17.pg,9780321924599,419,,hypothesis testing one sample stdev,Statistics,Hypothesis tests,One sample variance
+kbff,fs-10a-LabReport,q18.pg,9780321924599,423,,hypothesis testing one sample stdev,Statistics,Hypothesis tests,One sample variance
+vonl,fs-13-LabReport,q06.pg,,,,,Statistics,Hypothesis tests,Chi-squared test for goodness of fit
+qido,fs-13-LabReport,q07.pg,,,,,Statistics,Nonparametric methods,Kolmogorov-Smirnov test
+keac,fs-13-LabReport,q08.pg,,,,,Statistics,Nonparametric methods,Kolmogorov-Smirnov test
+rboj,fs-14-LabReport,q08.pg,,,,,Statistics,Hypothesis tests,One-way ANOVA
+cver,fs-13-LabReport,q04.pg,,,,,Statistics,Hypothesis tests,Chi-squared test for goodness of fit
+ukud,la-08-LabReport,q16.pg,,,Library/ASU-topics/setSystems2Variables/bethpairs6.pg,linearizing system of non-linear equations,Algebra,Systems of equations and inequalities,Nonlinear systems
+fliu,la-08-LabReport,q17.pg,,,,least squares adjustment,Linear algebra,Inner products,Projection and distance
+kwpk,la-08-LabReport,q18.pg,,,,least squares adjustment,Linear algebra,Inner products,Projection and distance
 vzto
 qmyj
 pyds

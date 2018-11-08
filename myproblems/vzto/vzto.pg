@@ -1,0 +1,147 @@
+# DESCRIPTION
+# WeBWorK problem written by Stefan Lukits 
+# <slukits(at)bcit(dot)ca>
+# DBsubject(Linear algebra)
+# DBchapter(Inner products)
+# DBsection(Projection and distance)
+# Date(2018/11/07)
+# Institution(British Columbia Institute of Technology)
+# Author(Stefan Lukits)
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "RserveClient.pl",
+  "MathObjects.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+### Random number generator seed based on student's login. No need to change.
+Context("Numeric");
+# warn("Student name: $studentName, login: $studentLogin, id: $studentID");
+my $hash = crypt($studentLogin, 'a1');
+# warn("crypt: $hash");
+@nums = (0..9,'a'..'z','A'..'Z');
+my %nums = map { $nums[$_] => $_ } 0..$#nums;
+my $seed = 0;
+$seed = $seed * 62 + $nums{$_} foreach split(//, substr($hash, -5, 5));
+# warn("seed: " . $seed);
+
+### Call R server
+rserve_eval("set.seed($seed)"); 
+
+@n=(
+"John",
+"Jerome",
+"Francis",
+"Adeline",
+"Richard",
+"Leonard",
+"Raymond",
+"Allyson",
+"Rebecca",
+"Charles",
+"Mariana",
+"Patricia",
+"Robert",
+"Donald",
+"Steven",
+"Eden",
+"Norman",
+"Catherine",
+"Clara",
+"Kara",
+"Jean",
+"Linda",
+"David",
+"Ernest",
+"Charles",
+"Doris",
+"Arthur",
+"Sheila",
+"Kimberly",
+"Carol",
+"Chad",
+"Lena",
+"Aaron",
+"Barbara",
+"Christina",
+"Elizabeth",
+"Vincent",
+"Kenneth",
+"Anna",
+"Andre",
+"Keith",
+"Thomas",
+"Roger",
+"Zane",
+"April",
+"Lauren",
+"Jan",
+"Stephen",
+"Arron",
+"Robert"
+);
+
+$m1=random(0,49,1);
+do { $m2=random(0,49,1); } until ($m2!=$m1);
+do { $m3=random(0,49,1); } until (($m3!=$m1) && ($m3!=$m2));
+do { $m4=random(0,49,1); } until (($m4!=$m1) && ($m4!=$m2) && ($m4!=$m3));
+$name1=$n[$m1];
+$name2=$n[$m2];
+$name3=$n[$m3];
+$name4=$n[$m4];
+
+@e=rserve_eval("
+rnorm(1,0,5);
+");
+@d=rserve_eval("
+runif(4,2000,8000);
+");
+
+$x1=sprintf("%.1f",$d[0]);
+$y1=sprintf("%.1f",$d[1]);
+$x2=sprintf("%.1f",$d[2]);
+$y2=sprintf("%.1f",$d[3]);
+$d=sprintf("%.1f",(($x2-$x1)**2+($y2-$y1)**2)**.5+$e[0]);
+$D=(($x2-$x1)**2+($y2-$y1)**2)**.5;
+$p1=($x1-$x2)/$D;
+$p2=($y1-$y2)/$D;
+$p3=($x2-$x1)/$D;
+$p4=($y2-$y1)/$D;
+$a1=$p1*$x1;
+$a2=$p2*$y1;
+$a3=$p3*$x2;
+$a4=$p4*$y2;
+$y=$a1+$a2+$a3+$a4-$D+$d;
+
+Context("Matrix");
+$A=Matrix([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1],[$p1,$p2,$p3,$p4]]);
+$At=$A->transpose;
+$Yt=Matrix([[$x1,$y1,$x2,$y2,$y]]);
+$Y=$Yt->transpose;
+$AtA=$At*$A;
+$AtAi=$AtA->inverse;
+$V=$AtAi*$At*$Y;
+$x1u=$V->element(1,1);
+$y1u=$V->element(2,1);
+$x2u=$V->element(3,1);
+$y2u=$V->element(4,1);
+$Du=(($x2u-$x1u)**2+($y2u-$y1u)**2)**.5;
+
+BEGIN_TEXT
+You have two points on a coordinate system, \(P=($x1,$y1)\) and \(Q=($x2,$y2)\), but the coordinates were measured with a certain measurement error. You measure the distance between them in order to apply least squares adjustment to your coordinates with a measurement result of \(d=$d\) units (the measurement error for the distance measurement is expected to be roughly the same as the measurement error for the coordinate measurements). What is the distance between the adjusted coordinates of \(P\) and \(Q\), rounded to one digit after the decimal point? Perform only one iteration of the linearization process.
+$PAR
+Answer: \{ans_rule(12)\}
+
+END_TEXT
+
+ANS(num_cmp($Du,
+  tolType => 'absolute',
+    tolerance => .1,
+    ));
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.
